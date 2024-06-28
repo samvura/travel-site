@@ -1,0 +1,142 @@
+.site-header {
+    padding: 10px 0;
+    position: absolute; /*overlaying of logo*/
+    width: 100%;
+    z-index: 2; /*brings the overlaid image forward*/
+    transition: background-color .3s ease-out;
+
+    &--is-expanded {
+        background-color: rgba($mainBlue, .55);
+    }
+    
+    @mixin atMedium {
+        background-color: rgba($mainBlue, .3);
+    }
+
+    &__btn-container {
+        @mixin atMedium {
+            /*float: right; using float to push "get in touch" button to the right*/
+            order: 2; /* Sets the order in which the menu comes before the button*/
+            padding-right: 20px;
+
+        }
+        
+    }
+
+    &__logo {
+        position: absolute; /*overlays the the image above the logo*/
+        top: 0; /*pushes log flash against the top edge*/
+        left: 50%; /* pulls logo to the right */
+        transform: translateX(-50%) scale(.8);
+        transform: translateX(-50%) scale(.8); /* offset pull to the right to centre logo on small screen */
+        background-color: $mainBlue;
+        padding: 25px 36px;
+
+        @mixin atMedium {
+            left: auto; /* pushing logo to the far left on larger screeens */
+            transform: translateX(0);
+            padding: 25px 36px;
+        }
+    }
+
+
+
+        
+    
+        /** Creating box for menu item for mobile devices  **/
+    &__menu-icon {
+        width: 20px;
+        height: 19px;
+        /*background-color: #FFF;*/
+        /* to position box to the right */
+        position: absolute; 
+        z-index: 10;
+        top: 10px;
+        right: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            transform-origin: 0 0;
+            transition: transform .3s ease-out;
+        }
+
+        &__middle {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            transition: all ;
+            transform-origin: 0 50%;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            transform-origin: 0 100%;
+            transition: transform .3s ease-out;
+        }
+
+        /* Hiding this box on larger screens */
+        @mixin atMedium {
+            display: none;
+        }
+
+    }
+
+    &__menu-icon--close-x {
+        &::before {
+            transform: rotate(45deg) scaleX(1.25);
+        }
+
+        .site-header__menu-icon__middle {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        &::after {
+            transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+        }
+    }
+
+    &__menu-content {
+        opacity: 0;
+        transform: scale(1.2);
+        transition: all .3s ease-out;
+        position: relative;
+        z-index: -10;
+        padding-top: 100px;
+        text-align: center;
+
+        @mixin atMedium {
+            display: flex; /*Shows and align menu on larger screens*/
+            justify-content: flex-end; /* Shifts menu to the right */
+            opacity: 1;
+            z-index: 1;
+            padding-top: 0; /*Offset padding from mobile menu */
+            transform: scale(1);
+        }
+
+        &--is-visible {
+            /*display: flex; makes mobile menu box toggled menu box */
+            /* justify-content: flex-end;*/
+            opacity: 1;
+            z-index: 1;
+            /*padding-top: 0;*/
+            transform: scale(1);
+        }
+    }
+}
+

@@ -1,17 +1,29 @@
 .large-hero {
     border-bottom: 10px solid $mainBlue;
-    position: relative;
+    /*position: relative; /*Positioning of overlay on image*/
+    display: grid; /* Grid and overlay properties */
+    grid-template-columns: 1fr;  /* Grid and overlay properties */
 
     &__image {
-        display: block;
+        grid-column: 1; /* Grid and overlay properties */
+        grid-row: 1; /* Grid and overlay properties */
+        
+        img {
+            display: block; /* Grid and overlay properties */
+        }
     }
 
     &__text-content {
-        position: absolute;
+        align-self: center; /* Grid and overlay properties */
+        grid-column: 1; /* Grid and overlay properties */
+        grid-row: 1; /* Grid and overlay properties */
+        padding-top: 60px;
+        /*Overlays text content on top of the image the old way */
+        /*position: absolute;  
         top: 50%;
         transform: translateY(-50%);
         left: 0;
-        width: 100%;
+        width: 100%; */
         text-align: center;
     }
 
