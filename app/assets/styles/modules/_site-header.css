@@ -10,7 +10,12 @@
     }
     
     @mixin atMedium {
+        position:fixed;
         background-color: rgba($mainBlue, .3);
+
+        &--dark {
+            background-color: rgba(23, 51, 72, .85);
+          }
     }
 
     &__btn-container {
@@ -27,8 +32,9 @@
         position: absolute; /*overlays the the image above the logo*/
         top: 0; /*pushes log flash against the top edge*/
         left: 50%; /* pulls logo to the right */
-        transform: translateX(-50%) scale(.8);
+        transition: transform .3s ease-out;
         transform: translateX(-50%) scale(.8); /* offset pull to the right to centre logo on small screen */
+        transform-origin: 50% 0;
         background-color: $mainBlue;
         padding: 25px 36px;
 
@@ -36,12 +42,13 @@
             left: auto; /* pushing logo to the far left on larger screeens */
             transform: translateX(0);
             padding: 25px 36px;
+
+            .site-header--dark & {
+                transform: scale(.55);
+              }
         }
     }
 
-
-
-        
     
         /** Creating box for menu item for mobile devices  **/
     &__menu-icon {

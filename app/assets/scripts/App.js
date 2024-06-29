@@ -1,7 +1,9 @@
 import '../styles/styles.css'
-import MobileMenu from './modules/MobileMenu'
-import RevealOnScroll from './modules/RevealOnScroll'
+import MobileMenu from './Modules/MobileMenu'
+import RevealOnScroll from './Modules/RevealOnScroll'
+import StickyHeader from './Modules/StickyHeader'
 
+let stickyHerder = new StickyHeader()
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 75)
 new RevealOnScroll(document.querySelectorAll(".testimonial"), 60)
 
